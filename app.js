@@ -6,4 +6,4 @@ env.config({path:'./config.env'})
 app.use(express.json());
 app.use(require('./router/auth'));
 const port=process.env.PORT || 3000;
-app.listen(port);
+app.listen(port,console.log("server running"));

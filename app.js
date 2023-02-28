@@ -5,5 +5,5 @@ const env=require('dotenv');
 env.config({path:'./config.env'})
 app.use(express.json());
 app.use(require('./router/auth'));
-const port= 5000;
+const port=process.env.PORT || 3000;
 app.listen(port);

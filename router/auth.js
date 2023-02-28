@@ -62,10 +62,8 @@ router.post('/delete', async (req, res) => {
     res.status(201).json({ mess: "Email Removed" });
 })
 router.get('/home',authenticate,(req,res)=>{
+    console.log("Done");
     res.send(req.userData);
-})
-router.get('/',(req,res)=>{
-    res.send("ruko jara");
 })
 router.get('/about',authenticate,(req,res)=>{
     res.send(req.userData);

@@ -57,6 +57,7 @@ router.post('/singin', async (req, res) => {
         expires:new Date(Date.now()+3600000),
         httpOnly:true
     })
+    console.log(JSON.parse(findUser));
     res.setHeader("Access-Control-Allow-Credentials",true);
     res.status(201).json(findUser);
 });

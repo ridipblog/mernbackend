@@ -37,6 +37,7 @@ router.post('/register', async (req, res) => {
     });
 });
 router.post('/singin', async (req, res) => {
+    console.log("Ok");
     const { email, password } = req.body;
     if (!email || !password) {
         return res.status(422).json({ mess: "Fill Inputs" })

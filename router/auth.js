@@ -54,7 +54,7 @@ router.post('/singin', async (req, res) => {
     }
     console.log("addming cookie");
     await res.cookie("email",findUser.email);
-    res.status(201).json(findUser);
+    await res.status(201).json(findUser);
 });
 router.post('/delete', async (req, res) => {
     const email=req.query.email;

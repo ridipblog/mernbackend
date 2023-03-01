@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const cors=require('cors');
 const bcrypt = require('bcrypt');
 const jwt=require('jsonwebtoken');
 const env=require('dotenv');
@@ -57,8 +56,6 @@ router.post('/singin', async (req, res) => {
         expires:new Date(Date.now()+3600000),
         httpOnly:true
     })
-    console.log(JSON.parse(findUser));
-    res.setHeader("Access-Control-Allow-Credentials",true);
     res.status(201).json(findUser);
 });
 router.post('/delete', async (req, res) => {

@@ -56,16 +56,16 @@ router.post('/singin', async (req, res) => {
         expires:new Date(Date.now()+3600000),
         httpOnly:true
     })
-    res.status(201).json(findUser);
+    res.status(201).send(findUser);
 });
 router.post('/delete', async (req, res) => {
     const email=req.query.email;
     await Users.deleteOne({ email });
     res.status(201).json({ mess: "Email Removed" });
 })
-router.get('/',authenticate,(req,res)=>{
+router.get('/home',authenticate,(req,res)=>{
     console.log("Done");
-    res.send(req.userData);
+    res.json(req.userData);
 })
 router.get('/about',authenticate,(req,res)=>{
     res.send(req.userData);

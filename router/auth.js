@@ -4,12 +4,12 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt=require('jsonwebtoken');
 const env=require('dotenv');
+env.config({path:'./config.env'})
 const cookieParser=require('cookie-parser');
 router.use(cookieParser())
 require('../db/conn');
 const Users = require('../model/users');
 const authenticate=require('../middleware/authenticate');
-router.use(cors());
 router.post('/register', async (req, res) => {
     let { name, email, phone, work, password} = req.body;
 

@@ -56,7 +56,7 @@ router.post('/singin', async (req, res) => {
         expires:new Date(Date.now()+3600000),
         httpOnly:true
     })
-    res.status(201).send(findUser);
+    res.status(201).json(findUser);
 });
 router.post('/delete', async (req, res) => {
     const email=req.query.email;
@@ -65,7 +65,7 @@ router.post('/delete', async (req, res) => {
 })
 router.get('/home',authenticate,(req,res)=>{
     console.log("Done");
-    res.json(req.userData);
+    res.send(req.userData);
 })
 router.get('/about',authenticate,(req,res)=>{
     res.send(req.userData);

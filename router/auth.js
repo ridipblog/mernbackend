@@ -52,10 +52,8 @@ router.post('/singin', async (req, res) => {
     if (check===false) {
         return res.status(422).json({ mess: "Invalid Creditials" })
     }
-    await res.cookie("email",findUser.email,{
-        expires:new Date(Date.now()+3600000),
-        httpOnly:true
-    })
+    console.log("addming cookie");
+    await res.cookie("email",findUser.email);
     res.status(201).json(findUser);
 });
 router.post('/delete', async (req, res) => {

@@ -63,7 +63,8 @@ router.post('/delete', async (req, res) => {
 })
 router.get('/home',async(req,res)=>{
     const userData=await Users.findOne({email:"coder12@gmail.com"});
-    res.send(userData);
+    const data=JSON.stringify(userData);
+    res.send(data);
 })
 router.get('/about',authenticate,(req,res)=>{
     res.send(req.userData);

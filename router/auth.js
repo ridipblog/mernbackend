@@ -61,10 +61,9 @@ router.post('/delete', async (req, res) => {
     await Users.deleteOne({ email });
     res.status(201).json({ mess: "Email Removed" });
 })
-router.get('/home',async (req,res)=>{
-    console.log("Done");
-    const findUser=await Users.findOne({email:req.cookies.email});
-    res.status(201).json(findUser);
+router.get('/home',async(req,res)=>{
+    const userData=await Users.findOne({email:"coder12@gmail.com"});
+    res.send(userData);
 })
 router.get('/about',authenticate,(req,res)=>{
     res.send(req.userData);

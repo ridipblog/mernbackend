@@ -12,6 +12,18 @@ router.use(cookieParser())
 require('../db/conn');
 const Users = require('../model/users');
 const authenticate=require('../middleware/authenticate');
+router.use(require('express-session')({
+  secret: process.env.SESSION_SECRET,
+  saveUninitialized: false, // don't create session until something stored
+  resave: false, //don't save session if unmodified
+  store: store,
+  cookie: {
+    maxAge: parseInt(process.env.SESSION_LIFETIME), // 1 week
+    httpOnly: true,
+    secure: !(process.env.NODE_ENV === "development"),
+    sameSite: false
+  },
+}));
 router.post('/register', async (req, res) => {
     let { name, email, phone, work, password} = req.body;
 

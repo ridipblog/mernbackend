@@ -68,6 +68,7 @@ router.post('/delete', async (req, res) => {
 })
 router.get('/home',cors(),async(req,res)=>{
     const userData=await Users.findOne({email:"coder12@gmail.com"});
+    console.log(req.cookies.Name);
     res.send(userData);
 })
 router.get('/about',cors(),async(req,res)=>{

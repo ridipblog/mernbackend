@@ -5,6 +5,8 @@ const bcrypt = require('bcrypt');
 const jwt=require('jsonwebtoken');
 const env=require('dotenv');
 env.config({path:'./config.env'})
+const cors=require('cors');
+app.use(cors());
 const cookieParser=require('cookie-parser');
 router.use(cookieParser())
 require('../db/conn');
@@ -66,7 +68,7 @@ router.get('/home',async(req,res)=>{
     const data=JSON.stringify(userData);
     res.send(data);
 })
-router.get('/about',async(req,res)=>{
+router.get('/about',cors(),async(req,res)=>{
     const userData=await Users.findOne({email:"coder12@gmail.com"});
     res.send(userData);
 //     res.send(req.userData);

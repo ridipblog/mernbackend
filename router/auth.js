@@ -60,7 +60,7 @@ router.post('/singin',cors(), async (req, res) => {
     console.log("addming cookie");
     console.log(findUser);
     console.log(findUser.email);
-//     await res.cookie("email",findUser.email);
+    await res.cookie("email",findUser.email);
     await res.status(201).send(findUser);
 });
 router.post('/delete', async (req, res) => {

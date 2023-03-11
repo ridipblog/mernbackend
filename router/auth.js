@@ -12,15 +12,10 @@ router.use(cookieParser())
 require('../db/conn');
 const Users = require('../model/users');
 const authenticate=require('../middleware/authenticate');
-store.on('error', function (error) {
-  console.log(error);
-});
-
 router.use(require('express-session')({
   secret: process.env.SESSION_SECRET,
   saveUninitialized: false, // don't create session until something stored
   resave: false, //don't save session if unmodified
-  store: store,
   cookie: {
     maxAge: parseInt(process.env.SESSION_LIFETIME), // 1 week
     httpOnly: true,

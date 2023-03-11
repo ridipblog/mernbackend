@@ -6,12 +6,16 @@ const jwt=require('jsonwebtoken');
 const env=require('dotenv');
 env.config({path:'./config.env'})
 const cors=require('cors');
-router.use(cors());
+// router.use(cors());
 const cookieParser=require('cookie-parser');
 router.use(cookieParser())
 require('../db/conn');
 const Users = require('../model/users');
 const authenticate=require('../middleware/authenticate');
+store.on('error', function (error) {
+  console.log(error);
+});
+
 router.use(require('express-session')({
   secret: process.env.SESSION_SECRET,
   saveUninitialized: false, // don't create session until something stored
@@ -23,6 +27,14 @@ router.use(require('express-session')({
     secure: !(process.env.NODE_ENV === "development"),
     sameSite: false
   },
+}));
+router.enable('trust proxy');
+router.use(cors({
+  origin: [
+    process.env.CLIENT_ORIGINS.split(',')
+  ],
+  credentials: true,
+  exposedHeaders: ['set-cookie']
 }));
 router.post('/register', async (req, res) => {
     let { name, email, phone, work, password} = req.body;

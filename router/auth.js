@@ -7,7 +7,7 @@ const jwt=require('jsonwebtoken');
 const env=require('dotenv');
 env.config({path:'./config.env'})
 const cors=require('cors');
-router.use(cors());
+router.use(cors({origin:"https://mernback-jma2.onrender.com"}));
 const cookieParser=require('cookie-parser');
 const session=require('express-session');
 router.use(cookieParser())
@@ -39,7 +39,7 @@ router.post('/register', async (req, res) => {
         res.status(201).json(store);
     });
 });
-router.post('/singin',cors(), async (req, res) => {
+router.post('/singin', async (req, res) => {
     console.log(req.body);
     const { email, password } = req.body;
     if (!email || !password) {
@@ -63,7 +63,7 @@ router.post('/delete', async (req, res) => {
     await Users.deleteOne({ email });
     res.status(201).json({ mess: "Email Removed" });
 })
-router.get('/home',cors(),async(req,res)=>{
+router.get('/home',async(req,res)=>{
     const userData=await Users.findOne({email:"coder12@gmail.com"});
     res.send(userData);
 })

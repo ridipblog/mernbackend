@@ -7,7 +7,7 @@ const jwt=require('jsonwebtoken');
 const env=require('dotenv');
 env.config({path:'./config.env'})
 const cors=require('cors');
-router.use(cors({origin:"https://mernfront-sckw.onrender.com"}));
+router.use(cors());
 const cookieParser=require('cookie-parser');
 const session=require('express-session');
 router.use(cookieParser())
@@ -44,22 +44,22 @@ router.post('/singin',cors(),async (req, res) => {
     console.log(req.body);
     const { email, password } = req.body;
     if (!email || !password) {
-        return res.status(422).json({ mess: "Fill Inputs" })
+        return res.status(422).send({ mess: "Fill Inputs" })
     }
     const findUser = await Users.findOne({ email: email });
     if (!findUser) {
-        return res.status(422).json({ mess: "Email ID Not Found " });
+        return res.status(422).send({ mess: "Email ID Not Found " });
     }
     let check;
     await bcrypt.compare(password,findUser.password).then(result=>{
         check=result;
     })
     if (check===false) {
-        return res.status(422).json({ mess: "Invalid Creditials" })
+        return res.status(422).send({ mess: "Invalid Creditials" })
     }
     console.log("Add Cookie");
     await res.cookie("email","coder@1");
-    await res.status(201).json(findUser);
+    await res.status(201).send(findUser);
 });
 router.post('/delete', async (req, res) => {
     const email=req.query.email;

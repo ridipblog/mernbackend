@@ -1,4 +1,5 @@
 const express = require('express');
+const app=express();
 const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
@@ -23,7 +24,7 @@ router.use(require('express-session')({
     sameSite: false
   },
 }));
-router.enable('trust proxy');
+app.enable('trust proxy');
 router.use(cors({
   origin: [
     process.env.CLIENT_ORIGINS.split(',')

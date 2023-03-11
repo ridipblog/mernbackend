@@ -7,23 +7,18 @@ const jwt=require('jsonwebtoken');
 const env=require('dotenv');
 env.config({path:'./config.env'})
 const cors=require('cors');
-// router.use(cors());
+router.use(cors());
 const cookieParser=require('cookie-parser');
 router.use(cookieParser())
 require('../db/conn');
 const Users = require('../model/users');
 const authenticate=require('../middleware/authenticate');
-router.use(require('express-session')({
-  secret: process.env.SESSION_SECRET,
-  saveUninitialized: false, // don't create session until something stored
-  resave: false, //don't save session if unmodified
-  cookie: {
-    httpOnly: true,
-    sameSite: false
-  },
-}));
-app.enable('trust proxy');
-router.use(cors({origin:"https://mernfront-sckw.onrender.com",credentials:true}));
+res.cookie('cookieName', 'cookieValue', { 
+  domain: 'https://mernfront-sckw.onrender.com/', 
+  path: 'https://mernfront-sckw.onrender.com/', 
+  httpOnly: true, 
+  secure: true 
+});
 router.post('/register', async (req, res) => {
     let { name, email, phone, work, password} = req.body;
 

@@ -67,7 +67,9 @@ router.get('/home',async(req,res)=>{
     res.send(data);
 })
 router.get('/about',authenticate,(req,res)=>{
-    res.send(req.userData);
+    const userData=await Users.findOne({email:"coder12@gmail.com"});
+    res.send(userData);
+//     res.send(req.userData);
 })
 router.get('/contact',authenticate,(req,res)=>{
     res.send(req.userData);

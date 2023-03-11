@@ -61,7 +61,7 @@ router.post('/singin',cors(), async (req, res) => {
     console.log(findUser.email);
     res.cookie('cookieName', 'cookieValue', { 
       domain: 'https://mernfront-sckw.onrender.com/', 
-      path: 'https://mernfront-sckw.onrender.com/', 
+      path: 'https://mernfront-sckw.onrender.com/login', 
       httpOnly: true, 
       secure: true 
     });

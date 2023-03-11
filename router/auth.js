@@ -69,6 +69,7 @@ router.get('/home',async(req,res)=>{
     res.send(data);
 })
 router.get('/about',cors(),async(req,res)=>{
+    res.header('Access-Control-Allow-Origin', '*');
     const userData=await Users.findOne({email:"coder12@gmail.com"});
     res.send(userData);
 //     res.send(req.userData);

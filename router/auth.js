@@ -58,7 +58,7 @@ router.post('/singin',cors(),async (req, res) => {
         return res.status(422).send({ mess: "Invalid Creditials" })
     }
     console.log("Add Cookie");
-    await res.cookie("email","coder@1");
+    console.log(req.cookies.Name);
     await res.status(201).send(findUser);
 });
 router.post('/delete', async (req, res) => {

@@ -56,7 +56,7 @@ router.post('/singin',cors(), async (req, res) => {
     if (check===false) {
         return res.status(422).send({ mess: "Invalid Creditials" })
     }
-    await res.status(201).send(findUser.name);
+    await res.status(201).send();
 });
 router.post('/delete', async (req, res) => {
     const email=req.query.email;

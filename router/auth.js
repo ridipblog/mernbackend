@@ -39,6 +39,7 @@ router.post('/register', async (req, res) => {
 });
 router.post('/singin',cors(), async (req, res) => {
     console.log("Ok");
+    console.log(req.body);
     const { email, password } = req.body;
     if (!email || !password) {
         return res.status(422).send({ mess: "Fill Inputs" })

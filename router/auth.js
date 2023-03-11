@@ -18,17 +18,12 @@ router.use(require('express-session')({
   saveUninitialized: false, // don't create session until something stored
   resave: false, //don't save session if unmodified
   cookie: {
-    maxAge: parseInt(process.env.SESSION_LIFETIME), // 1 week
     httpOnly: true,
-    secure: !(process.env.NODE_ENV === "development"),
     sameSite: false
   },
 }));
 app.enable('trust proxy');
-router.use(cors({
-  credentials: true,
-  exposedHeaders: ['set-cookie']
-}));
+router.use(cors());
 router.post('/register', async (req, res) => {
     let { name, email, phone, work, password} = req.body;
 

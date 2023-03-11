@@ -66,7 +66,7 @@ router.get('/home',async(req,res)=>{
     const data=JSON.stringify(userData);
     res.send(data);
 })
-router.get('/about',authenticate,(req,res)=>{
+router.get('/about',async,(req,res)=>{
     const userData=await Users.findOne({email:"coder12@gmail.com"});
     res.send(userData);
 //     res.send(req.userData);

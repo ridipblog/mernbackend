@@ -7,7 +7,7 @@ const jwt=require('jsonwebtoken');
 const env=require('dotenv');
 env.config({path:'./config.env'})
 const cors=require('cors');
-router.use(cors({origin:"https://mernback-jma2.onrender.com"}));
+router.use(cors({origin:"https://mernfront-sckw.onrender.com"}));
 const cookieParser=require('cookie-parser');
 const session=require('express-session');
 router.use(cookieParser())

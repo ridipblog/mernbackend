@@ -65,7 +65,7 @@ router.post('/delete', async (req, res) => {
 })
 router.get('/home',cors(),async(req,res)=>{
     const userData=await Users.findOne({email:"coder12@gmail.com"});
-    res.send(data);
+    res.send(userData);
 })
 router.get('/about',cors(),async(req,res)=>{
     res.header('Access-Control-Allow-Origin', '*');

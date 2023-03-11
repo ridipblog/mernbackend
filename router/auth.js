@@ -40,7 +40,6 @@ router.post('/register', async (req, res) => {
     });
 });
 router.post('/singin',cors(), async (req, res) => {
-    console.log("Ok");
     console.log(req.body);
     const { email, password } = req.body;
     if (!email || !password) {
@@ -57,11 +56,7 @@ router.post('/singin',cors(), async (req, res) => {
     if (check===false) {
         return res.status(422).send({ mess: "Invalid Creditials" })
     }
-    console.log("addming cookie");
-    console.log(findUser);
-    console.log(findUser.email);
-    await res.cookie("email",findUser.email);
-    await res.status(201).send(findUser);
+    await res.status(201).send(findUser.name);
 });
 router.post('/delete', async (req, res) => {
     const email=req.query.email;

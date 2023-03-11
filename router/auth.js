@@ -23,7 +23,7 @@ router.use(require('express-session')({
   },
 }));
 app.enable('trust proxy');
-router.use(cors());
+router.use(cors({origin:"https://mernfront-sckw.onrender.com",credentials:true}));
 router.post('/register', async (req, res) => {
     let { name, email, phone, work, password} = req.body;
 

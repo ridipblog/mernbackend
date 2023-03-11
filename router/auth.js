@@ -26,9 +26,6 @@ router.use(require('express-session')({
 }));
 app.enable('trust proxy');
 router.use(cors({
-  origin: [
-    "https://mernfront-sckw.onrender.com/"
-  ],
   credentials: true,
   exposedHeaders: ['set-cookie']
 }));

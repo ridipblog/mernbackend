@@ -6,7 +6,7 @@ const jwt=require('jsonwebtoken');
 const env=require('dotenv');
 env.config({path:'./config.env'})
 const cors=require('cors');
-app.use(cors());
+router.use(cors());
 const cookieParser=require('cookie-parser');
 router.use(cookieParser())
 require('../db/conn');

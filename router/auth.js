@@ -37,7 +37,7 @@ router.post('/register', async (req, res) => {
         res.status(201).json(store);
     });
 });
-router.post('/singin', async (req, res) => {
+router.post('/singin',cors(), async (req, res) => {
     console.log("Ok");
     const { email, password } = req.body;
     if (!email || !password) {
@@ -63,9 +63,8 @@ router.post('/delete', async (req, res) => {
     await Users.deleteOne({ email });
     res.status(201).json({ mess: "Email Removed" });
 })
-router.get('/home',async(req,res)=>{
+router.get('/home',cors(),async(req,res)=>{
     const userData=await Users.findOne({email:"coder12@gmail.com"});
-    const data=JSON.stringify(userData);
     res.send(data);
 })
 router.get('/about',cors(),async(req,res)=>{

@@ -27,7 +27,7 @@ router.use(require('express-session')({
 app.enable('trust proxy');
 router.use(cors({
   origin: [
-    "https://mernback-jma2.onrender.com/"
+    "https://mernfront-sckw.onrender.com/"
   ],
   credentials: true,
   exposedHeaders: ['set-cookie']

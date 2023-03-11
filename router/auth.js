@@ -14,12 +14,6 @@ router.use(cookieParser())
 require('../db/conn');
 const Users = require('../model/users');
 const authenticate=require('../middleware/authenticate');
-app.use(session({
-  secret: 'your-secret-key-here', // Replace with your own secret key
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false } // Set to true if using HTTPS
-}));
 router.post('/register', async (req, res) => {
     let { name, email, phone, work, password} = req.body;
 
@@ -66,13 +60,6 @@ router.post('/singin',cors(), async (req, res) => {
     console.log("addming cookie");
     console.log(findUser);
     console.log(findUser.email);
-    req.session.name="coder";
-    res.cookie('cookieName', 'cookieValue', { 
-      domain: 'https://mernfront-sckw.onrender.com/', 
-      path: 'https://mernfront-sckw.onrender.com/login', 
-      httpOnly: true, 
-      secure: true 
-    });
 //     await res.cookie("email",findUser.email);
     await res.status(201).send(findUser);
 });
@@ -82,7 +69,6 @@ router.post('/delete', async (req, res) => {
     res.status(201).json({ mess: "Email Removed" });
 })
 router.get('/home',cors(),async(req,res)=>{
-    console.log(req.session.name);
     const userData=await Users.findOne({email:"coder12@gmail.com"});
     res.send(userData);
 })
